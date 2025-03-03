@@ -16,7 +16,7 @@
   );
 }*/
 // app/page.js (or any other component)
-"use client"
+/*"use client"
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -58,4 +58,26 @@ const HomePage = () => {
   );
 };
 
+export default HomePage;*/
+'use client';
+
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+
+const Popup = dynamic(() => import('./components/Popup'));
+
+const HomePage = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setIsPopupOpen(true)}>Open Pop-up</button>
+
+      {isPopupOpen && <Popup onClose={() => setIsPopupOpen(false)} />}
+    </div>
+  );
+};
+
 export default HomePage;
+
